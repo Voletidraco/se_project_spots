@@ -20,4 +20,11 @@ The way you'll do this at work is by exporting images directly from Figma — we
 
 Good luck and have fun!
 
+## Github link
+
 https://voletidraco.github.io/se_project_spots/
+
+## Project Pitch Video
+
+Check out https://drive.google.com/file/d/1mQZda5c0pWkSP6OqzqysEPuQl9-xU2Cp/view?usp=sharing, where I describe my
+project and some challenges I faced while building it.
