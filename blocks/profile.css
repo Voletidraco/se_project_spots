@@ -54,6 +54,7 @@
   width: 117px;
   font-weight: 500;
   align-items: center;
+  cursor: pointer;
 }
 
 .profile__edit-button:hover {
