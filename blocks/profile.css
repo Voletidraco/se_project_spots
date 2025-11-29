@@ -66,6 +66,7 @@
 
 .profile__add-button {
   background-color: #212121;
+  padding: 0;
   height: 52px;
   width: 157px;
   border: none;
@@ -76,7 +77,9 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 1;
+  text-align: center;
   display: inline-flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   cursor: pointer;
