@@ -43,7 +43,7 @@
   max-width: 420px;
 }
 
-.profile__edit-button {
+.profile__edit-btn {
   margin-top: auto;
   padding: 0;
   border: none;
@@ -60,11 +60,11 @@
   cursor: pointer;
 }
 
-.profile__edit-button:hover {
+.profile__edit-btn:hover {
   opacity: 100%;
 }
 
-.profile__add-button {
+.profile__add-btn {
   background-color: #212121;
   padding: 0;
   height: 52px;
@@ -85,7 +85,7 @@
   cursor: pointer;
 }
 
-.profile__add-button:hover {
+.profile__add-btn:hover {
   opacity: 80%;
 }
 
@@ -120,11 +120,11 @@
     margin: 0 0 20px;
   }
 
-  .profile__edit-button {
+  .profile__edit-btn {
     align-self: center;
   }
 
-  .profile__add-button {
+  .profile__add-btn {
     margin: 0;
     width: 100%;
   }

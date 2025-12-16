@@ -24,7 +24,7 @@
   position: relative;
 }
 
-.modal__close-button {
+.modal__close-btn {
   padding: 0;
   position: absolute;
   top: 32px;
@@ -37,7 +37,7 @@
   opacity: 0.4;
 }
 
-.modal__close-button:hover {
+.modal__close-btn:hover {
   opacity: 1;
 }
 
@@ -87,7 +87,7 @@
   font-weight: 500;
 }
 
-.modal__submit-button {
+.modal__submit-btn {
   max-width: 156px;
   padding: 18px 32px;
   border: none;
@@ -100,12 +100,12 @@
   cursor: pointer;
 }
 
-.modal__submit-button:hover {
+.modal__submit-btn:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 627px) {
-  .modal__close-button {
+  .modal__close-btn {
     top: 12px;
     right: 12px;
   }
@@ -116,7 +116,7 @@
   }
 
   .modal__title {
-    margin: 0 0 24px;
+    margin: 10px 0 34px;
     font-size: 20px;
   }
 
@@ -132,7 +132,7 @@
     font-size: 16px;
   }
 
-  .modal__submit-button {
+  .modal__submit-btn {
     max-width: none;
     width: 100%;
   }
