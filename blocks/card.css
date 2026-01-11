@@ -56,12 +56,12 @@
   width: 23px;
   height: 20px;
   border: none;
-  opacity: 40%;
+  opacity: 0.4;
   cursor: pointer;
 }
 
 .card__like-button:hover {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .card__like-button_active {
