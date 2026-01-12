@@ -24,9 +24,9 @@ Good luck and have fun!
 
 ## Github link
 
-https://voletidraco.github.io/se_project_spots/
+[Link to the project GitHub Repo.](https://voletidraco.github.io/se_project_spots/)
 
 ## Project Pitch Video
 
-Check out https://drive.google.com/file/d/1mQZda5c0pWkSP6OqzqysEPuQl9-xU2Cp/view?usp=sharing, where I describe my
+Check out [Link to my first pitch video.](https://drive.google.com/file/d/1mQZda5c0pWkSP6OqzqysEPuQl9-xU2Cp/view?usp=sharing), where I describe my
 project and some challenges I faced while building it.

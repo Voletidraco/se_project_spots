@@ -59,6 +59,17 @@ const cardTemplate = document
   .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
 
+function handleCardDelete(cardElement) {
+  cardElement.remove();
+}
+
+function handleImageClick(data) {
+  previewImageEl.src = data.link;
+  previewImageEl.alt = data.name;
+  previewCaptionEl.textContent = data.name;
+  openModal(previewModal);
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
@@ -74,17 +85,11 @@ function getCardElement(data) {
   });
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-button");
-  cardDeleteBtnEl.addEventListener("click", () => {
-    cardElement.remove();
-    let cardElement = null;
-  });
 
-  cardImageEl.addEventListener("click", () => {
-    previewImageEl.src = data.link;
-    previewImageEl.alt = data.name;
-    previewCaptionEl.textContent = data.name;
-    openModal(previewModal);
-  });
+  cardDeleteBtnEl.addEventListener("click", () =>
+    handleCardDelete(cardElement)
+  );
+  cardImageEl.addEventListener("click", () => handleImageClick(data));
 
   return cardElement;
 }
@@ -140,8 +145,8 @@ function handleAddCardSubmit(evt) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  addCardFormEl.requestFullscreen();
   closeModal(newPostModal);
+  addCardFormEl.reset();
 }
 
 addCardFormEl.addEventListener("submit", handleAddCardSubmit);
