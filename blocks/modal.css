@@ -1,7 +1,9 @@
 .modal {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition:
+    visibility 0s linear 0.5s,
+    opacity 0.5s linear;
   background-color: #00000080;
   position: fixed;
   top: 0;
@@ -74,7 +76,8 @@
 }
 
 .modal__label {
-  margin: 0 0 32px;
+  display: block;
+  margin: 0 0 24px;
   font-size: 16px;
   line-height: 1.1;
   font-weight: 500;
@@ -82,7 +85,6 @@
 }
 
 .modal__input {
-  display: block;
   box-sizing: border-box;
   width: 100%;
   margin: 8px 0 0;
@@ -96,6 +98,10 @@
   font-weight: 500;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 .modal__input:hover {
   border: 1px solid #212121;
 }
@@ -105,6 +111,15 @@
   font-size: 20px;
   line-height: 1;
   font-weight: 500;
+}
+
+.modal__error {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255, 0, 0, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .modal__submit-btn {
@@ -122,6 +137,10 @@
 
 .modal__submit-btn:hover {
   opacity: 0.8;
+}
+
+.modal__submit-btn_disabled {
+  opacity: 0.5;
 }
 
 .modal__image-container {

@@ -34,10 +34,10 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
-  "#profile-name-input"
+  "#profile-name-input",
 );
 const editProfileDescriptionInput = editProfileModal.querySelector(
-  "#profile-description-input"
+  "#profile-description-input",
 );
 
 const newPostBtn = document.querySelector(".profile__add-btn");
@@ -46,6 +46,7 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 const addCardFormEl = newPostModal.querySelector(".modal__form");
+const cardSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
 const cardCaptionInput = newPostModal.querySelector("#card-caption-input");
 const imageLinkInput = newPostModal.querySelector("#card-image-input");
 
@@ -87,7 +88,7 @@ function getCardElement(data) {
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-button");
 
   cardDeleteBtnEl.addEventListener("click", () =>
-    handleCardDelete(cardElement)
+    handleCardDelete(cardElement),
   );
   cardImageEl.addEventListener("click", () => handleImageClick(data));
 
@@ -105,6 +106,12 @@ function closeModal(modal) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings,
+  );
+
   openModal(editProfileModal);
 });
 
@@ -145,8 +152,9 @@ function handleAddCardSubmit(evt) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  closeModal(newPostModal);
   addCardFormEl.reset();
+  disableButton(cardSubmitBtn, settings);
+  closeModal(newPostModal);
 }
 
 addCardFormEl.addEventListener("submit", handleAddCardSubmit);
