@@ -32,3 +32,5 @@ Check out [Link to my first pitch video.](https://drive.google.com/file/d/1mQZda
 project and some challenges I faced while building it.
 
 Check out (https://www.loom.com/share/ade923e0146746e0b8c4adb96e183506) where I descrtibe my most recent addition to the project and the challenges I faced during it.
+
+Additional video after making changes suggested by DOT (https://www.loom.com/share/3f8ba59b8504452297a49afca9e0da3c).
