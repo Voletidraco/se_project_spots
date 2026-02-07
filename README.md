@@ -30,3 +30,5 @@ Good luck and have fun!
 
 Check out [Link to my first pitch video.](https://drive.google.com/file/d/1mQZda5c0pWkSP6OqzqysEPuQl9-xU2Cp/view?usp=sharing), where I describe my
 project and some challenges I faced while building it.
+
+Check out (https://www.loom.com/share/ade923e0146746e0b8c4adb96e183506) where I descrtibe my most recent addition to the project and the challenges I faced during it.
