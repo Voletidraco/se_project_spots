@@ -37,7 +37,7 @@ modals.forEach((modal) => {
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
-const editProfileForm = editProfileModal.querySelector(".modal__form");
+const editProfileForm = document.querySelector("#edit-profile-form");
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input",
 );
@@ -52,7 +52,7 @@ const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
-const addCardFormEl = newPostModal.querySelector(".modal__form");
+const addCardFormEl = document.querySelector("#add-card-form");
 const cardSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
 const cardCaptionInput = newPostModal.querySelector("#card-caption-input");
 const imageLinkInput = newPostModal.querySelector("#card-image-input");
@@ -114,12 +114,21 @@ function handleModalClick(evt) {
   }
 }
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".modal_is-opened");
+    closeModal(openedPopup);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscape);
 }
 
 editProfileBtn.addEventListener("click", function () {
@@ -180,6 +189,10 @@ function handleAddCardSubmit(evt) {
 addCardFormEl.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (item) {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
+  renderCard(item, "append");
 });
+
+function renderCard(item, method = "prepend") {
+  const cardElement = getCardElement(item);
+  cardsList[method](cardElement);
+}
