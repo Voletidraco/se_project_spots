@@ -144,20 +144,8 @@ editProfileBtn.addEventListener("click", function () {
   openModal(editProfileModal);
 });
 
-editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal);
-});
-
-previewModalCloseBtn.addEventListener("click", function () {
-  closeModal(previewModal);
-});
-
 newPostBtn.addEventListener("click", function () {
   openModal(newPostModal);
-});
-
-newPostCloseBtn.addEventListener("click", function () {
-  closeModal(newPostModal);
 });
 
 function handleEditProfileSubmit(evt) {
@@ -179,8 +167,7 @@ function handleAddCardSubmit(evt) {
     link: imageLinkInput.value,
   };
 
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
+  renderCard(inputValues);
   addCardFormEl.reset();
   disableButton(cardSubmitBtn, settings);
   closeModal(newPostModal);
