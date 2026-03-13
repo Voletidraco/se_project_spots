@@ -1,3 +1,17 @@
+require("./index.css");
+
+const Validation = require("../scripts/validation.js");
+
+const logo = require("../images/logo.svg");
+const avatar = require("../images/avatar.jpg");
+const editIcon = require("../images/edit_icon.svg");
+const plusIcon = require("../images/plus_icon.svg");
+
+document.querySelector(".header__logo").src = logo;
+document.querySelector(".profile__avatar").src = avatar;
+document.querySelector(".profile__edit-icon").src = editIcon;
+document.querySelector(".profile__plus-icon").src = plusIcon;
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -134,11 +148,10 @@ function closeModal(modal) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  resetValidation(
+  Validation.resetValidation(
     editProfileForm,
     [editProfileNameInput, editProfileDescriptionInput],
     editProfileSubmitBtn,
-    settings,
   );
 
   openModal(editProfileModal);
@@ -169,7 +182,7 @@ function handleAddCardSubmit(evt) {
 
   renderCard(inputValues);
   addCardFormEl.reset();
-  disableButton(cardSubmitBtn, settings);
+  Validation.disableButton(cardSubmitBtn);
   closeModal(newPostModal);
 }
 
@@ -183,3 +196,5 @@ function renderCard(item, method = "prepend") {
   const cardElement = getCardElement(item);
   cardsList[method](cardElement);
 }
+
+Validation.enableValidation();
