@@ -9,5 +9,3 @@ function setButtonText(
 }
 
 module.exports = setButtonText;
-
-module.exports = setButtonText;

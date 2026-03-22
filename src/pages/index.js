@@ -187,8 +187,6 @@ editProfileBtn.addEventListener("click", function () {
 });
 
 avatarBtn.addEventListener("click", () => {
-  avatarInput.value = profileAvatarEl.src;
-
   Validation.resetValidation(
     editAvatarForm,
     [avatarInput],

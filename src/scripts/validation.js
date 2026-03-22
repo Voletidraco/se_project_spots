@@ -59,7 +59,7 @@ const Validation = {
       this.hideInputError(formEl, input);
     });
 
-    this.enableButton(buttonEl);
+    this.disableButton(buttonEl);
   },
 
   setEventListeners(formEl) {
