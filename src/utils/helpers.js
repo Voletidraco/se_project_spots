@@ -1,11 +1,32 @@
-function setButtonText(
-  btn,
+function renderLoading(
   isLoading,
-  defaultText = "Save",
+  button,
+  buttonText = "Save",
   loadingText = "Saving...",
 ) {
-  if (!btn) return;
-  btn.textContent = isLoading ? loadingText : defaultText;
+  if (isLoading) {
+    button.textContent = loadingText;
+  } else {
+    button.textContent = buttonText;
+  }
 }
 
-module.exports = setButtonText;
+function handleSubmit(request, evt, loadingText = "Saving...") {
+  evt.preventDefault();
+
+  const submitButton = evt.submitter;
+  const initialText = submitButton.textContent;
+
+  renderLoading(true, submitButton, initialText, loadingText);
+
+  request()
+    .then(() => {
+      evt.target.reset();
+    })
+    .catch(console.error)
+    .finally(() => {
+      renderLoading(false, submitButton, initialText);
+    });
+}
+
+module.exports = handleSubmit;

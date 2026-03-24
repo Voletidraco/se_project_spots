@@ -1,6 +1,6 @@
 require("./index.css");
 const Api = require("../utils/Api.js");
-const setButtonText = require("../utils/helpers.js");
+const handleSubmit = require("../utils/helpers.js");
 
 const Validation = require("../scripts/validation.js");
 
@@ -26,8 +26,6 @@ const api = new Api({
   },
 });
 
-let currentUserId;
-
 api
   .getAppInfo()
   .then(([cards, userData]) => {
@@ -39,7 +37,7 @@ api
 
     profileNameEl.textContent = userData.name;
     profileDescriptionEl.textContent = userData.about;
-    document.querySelector(".profile__avatar").src = userData.avatar;
+    profileAvatarEl.src = userData.avatar;
   })
   .catch(console.error);
 
@@ -197,21 +195,14 @@ avatarBtn.addEventListener("click", () => {
 });
 
 function handleEditAvatarSubmit(evt) {
-  evt.preventDefault();
-
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-
-  api
-    .editAvatarInfo(avatarInput.value)
-    .then((userData) => {
+  function makeRequest() {
+    return api.editAvatarInfo(avatarInput.value).then((userData) => {
       profileAvatarEl.src = userData.avatar;
       closeModal(editAvatarModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false);
     });
+  }
+
+  handleSubmit(makeRequest, evt);
 }
 
 editAvatarForm.addEventListener("submit", handleEditAvatarSubmit);
@@ -221,53 +212,39 @@ newPostBtn.addEventListener("click", function () {
 });
 
 function handleEditProfileSubmit(evt) {
-  evt.preventDefault();
+  function makeRequest() {
+    return api
+      .editUserInfo({
+        name: editProfileNameInput.value,
+        about: editProfileDescriptionInput.value,
+      })
+      .then((userData) => {
+        profileNameEl.textContent = userData.name;
+        profileDescriptionEl.textContent = userData.about;
+        closeModal(editProfileModal);
+      });
+  }
 
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-
-  api
-    .editUserInfo({
-      name: editProfileNameInput.value,
-      about: editProfileDescriptionInput.value,
-    })
-    .then((userData) => {
-      profileNameEl.textContent = userData.name;
-      profileDescriptionEl.textContent = userData.about;
-
-      closeModal(editProfileModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  handleSubmit(makeRequest, evt);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleAddCardSubmit(evt) {
-  evt.preventDefault();
+  function makeRequest() {
+    return api
+      .addCard({
+        name: cardCaptionInput.value,
+        link: imageLinkInput.value,
+      })
+      .then((cardData) => {
+        renderCard(cardData);
+        Validation.disableButton(cardSubmitBtn);
+        closeModal(newPostModal);
+      });
+  }
 
-  const inputValues = {
-    name: cardCaptionInput.value,
-    link: imageLinkInput.value,
-  };
-
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-
-  api
-    .addCard(inputValues)
-    .then((cardData) => {
-      renderCard(cardData);
-      addCardFormEl.reset();
-      Validation.disableButton(cardSubmitBtn);
-      closeModal(newPostModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  handleSubmit(makeRequest, evt);
 }
 
 addCardFormEl.addEventListener("submit", handleAddCardSubmit);
@@ -278,21 +255,14 @@ function renderCard(item, method = "prepend") {
 }
 
 function handleDeleteSubmit(evt) {
-  evt.preventDefault();
-
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true, "Delete", "Deleting...");
-
-  api
-    .deleteCard(selectedCardId)
-    .then(() => {
+  function makeRequest() {
+    return api.deleteCard(selectedCardId).then(() => {
       selectedCard.remove();
       closeModal(deleteModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false, "Delete", "Deleting...");
     });
+  }
+
+  handleSubmit(makeRequest, evt, "Deleting...");
 }
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);

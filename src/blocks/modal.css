@@ -296,4 +296,29 @@
     font-size: 16px;
     max-width: 175px;
   }
+
+  .delete_modal__container {
+    max-width: 320px;
+    max-height: 220px;
+    padding: 12px;
+  }
+
+  .delete_modal__title {
+    max-width: 276px;
+    max-height: 68px;
+    text-align: center;
+    size: 20px;
+    line-height: 1.2;
+    margin: 0 0 20px;
+  }
+
+  .delete_modal__form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .delete_modal__close-btn {
+    top: -48px;
+    right: 6px;
+  }
 }
