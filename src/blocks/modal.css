@@ -35,6 +35,19 @@
   position: relative;
 }
 
+.delete_modal__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 630px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 32px 20px;
+  position: relative;
+}
+
 .modal__close-btn {
   padding: 0;
   position: absolute;
@@ -46,6 +59,18 @@
   background: center / cover no-repeat url(../images/close_icon_dark.svg);
   border: none;
   opacity: 0.4;
+}
+
+.delete_modal__close-btn {
+  padding: 0;
+  position: absolute;
+  bottom: 133px;
+  right: -48px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  background: center / cover no-repeat url(../images/close_icon_light.svg);
+  border: none;
 }
 
 .modal__close-btn:hover {
@@ -70,9 +95,22 @@
   font-weight: 500;
 }
 
+.delete_modal__title {
+  margin: 0 0 32px;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 500;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
+}
+
+.delete_modal__form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .modal__label {
@@ -124,6 +162,7 @@
 
 .modal__submit-btn {
   max-width: 156px;
+  max-height: 52px;
   padding: 18px 32px;
   border: none;
   border-radius: 8px;
@@ -132,6 +171,45 @@
   font-size: 16px;
   line-height: 1;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.modal__cancel-btn {
+  max-width: 156px;
+  max-height: 52px;
+  padding: 18px 52px;
+  border-color: #212121;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #212121;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal__cancel-btn:hover {
+  background-color: #212121;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal__delete-btn {
+  max-width: 156px;
+  max-height: 52px;
+  padding: 18px 52px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff6565;
+  color: #212121;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal__delete-btn:hover {
+  background-color: #ff3333;
   cursor: pointer;
 }
 
@@ -217,5 +295,30 @@
   .modal__caption {
     font-size: 16px;
     max-width: 175px;
+  }
+
+  .delete_modal__container {
+    max-width: 320px;
+    max-height: 220px;
+    padding: 12px;
+  }
+
+  .delete_modal__title {
+    max-width: 276px;
+    max-height: 68px;
+    text-align: center;
+    size: 20px;
+    line-height: 1.2;
+    margin: 0 0 20px;
+  }
+
+  .delete_modal__form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .delete_modal__close-btn {
+    top: -48px;
+    right: 6px;
   }
 }
